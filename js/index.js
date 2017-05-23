@@ -75,11 +75,15 @@ function geolocalizar(){
 			  cargarCategoria();
 		  };
 		  var errorFunction = function(){
-			  alert("Se ha producido un error al geolocalizar");
+			  alert("Compruebe que tiene activada la ubicación del dispositivo y que se encuentra cerca del municipio: Villa del Río");
 			  loading(false);
 		  };
 		  loading(true);
-		  navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+		  navigator.geolocation.getCurrentPosition(successFunction, errorFunction,{
+			maximumAge: 75000,
+			timeout: 7000
+		  });
+		  
 		} else {
 		  alert("El navegador utilizado no soporta la geolocalización");
 		}
